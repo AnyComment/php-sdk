@@ -1,0 +1,20 @@
+{
+    "name": "anycomment/php-sdk",
+    "description": "PHP SDK to communicate with AnyComment REST API",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Alexander Teshabaev",
+            "email": "sasha.tesh@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "AnyComment\\": "src/"
+        }
+    },
+    "require": {
+        "guzzlehttp/guzzle": "^7.0",
+        "netresearch/jsonmapper": "^3.0"
+    }
+}
