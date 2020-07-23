@@ -79,7 +79,7 @@ class AnyComment\Dto\ResponseEnvelope#27 (3) {
 Get website information.
 
 Example:
-```
+```php
 $data = $api->getWebsite()->getInfo();
 ```
 
@@ -91,7 +91,7 @@ $data = $api->getWebsite()->getInfo();
 Get number of comments per requested page URL.
 
 Example:  
-```
+```php
 $data = $api->getPage()->getCommentCount('https://anycomment.io/demo');
 ```
 
@@ -104,6 +104,6 @@ Get profile information for given profile ID.
 
 Example:  
 
-```
+```php
 $data = $api->getProfile()->getInfo(1);
 ```
