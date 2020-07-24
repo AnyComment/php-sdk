@@ -1,10 +1,12 @@
 # AnyComment PHP-SDK
 
+[![Build Status](https://travis-ci.org/AnyComment/php-sdk.svg?branch=master)](https://travis-ci.org/AnyComment/php-sdk)
+
 AnyComment API is an HTTP-based interface created for developers to help to work with AnyComment REST services.
  
 The documentation can be found [here](https://anycommentio.docs.apiary.io/).
 
-Minimum requirement is PHP 7.3.
+Minimum requirement is PHP 7.4.
 
 ## Installation 
 

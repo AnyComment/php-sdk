@@ -16,18 +16,14 @@ class Request
     /**
      * @var Config
      */
-    private $config;
+    private Config $config;
 
     /**
      * Request constructor.
      * @param Config $config
      */
-    public function __construct($config)
+    public function __construct(Config $config)
     {
-        if (!$config instanceof Config) {
-            throw new \InvalidArgumentException('Wrong config instance passed, expected ' . Config::class);
-        }
-
         $this->config = $config;
     }
 
@@ -39,7 +35,7 @@ class Request
      * @return \Psr\Http\Message\ResponseInterface
      * @throws RequestFailException
      */
-    public function get($uri, $params = [])
+    public function get(string $uri, array $params = [])
     {
         return $this->request('GET', $uri, [
             'query' => $params
@@ -53,7 +49,7 @@ class Request
      * @return \Psr\Http\Message\ResponseInterface
      * @throws RequestFailException
      */
-    public function post($uri, $params = [])
+    public function post(string $uri, array $params = [])
     {
         if (empty($params)) {
             throw new \InvalidArgumentException('Missing POST parameters.');
@@ -72,21 +68,12 @@ class Request
      * @return mixed
      * @throws ClassMapException
      */
-    public function mapResponse($response, $classNamespace)
+    public function mapResponse(ResponseInterface $response, string $classNamespace)
     {
-        if (!$response instanceof ResponseInterface) {
-            throw new \InvalidArgumentException('Wrong response instance passed, expected: ' . ResponseInterface::class);
-        }
-
-        if (!is_string($classNamespace)) {
-            throw new \InvalidArgumentException('Non string value passed as class namespace');
-        }
-
         if (empty($classNamespace)) {
             throw new \InvalidArgumentException('Mapping class namespace is not provided');
         }
 
-        var_dump((string)$response->getBody());
         $array = json_decode((string)$response->getBody(), false);
 
         try {
@@ -117,7 +104,7 @@ class Request
      * @return \Psr\Http\Message\ResponseInterface
      * @throws RequestFailException
      */
-    private function request($method, $uri, $config = [])
+    private function request(string $method, string $uri, array $config = [])
     {
         if (!in_array($method, ['GET', 'POST', 'PUT', 'DELETE'])) {
             throw new \InvalidArgumentException('Unsupported request method type: ' . $method);
@@ -142,7 +129,7 @@ class Request
     /**
      * @return Client
      */
-    private function getClient()
+    private function getClient(): Client
     {
         return new Client([
             'base_uri' => $this->config->getBaseApiUrl(),

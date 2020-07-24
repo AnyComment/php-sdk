@@ -19,7 +19,7 @@ class Comment
     /**
      * @var Request
      */
-    private $api;
+    private Request $api;
 
     /**
      * Website constructor.

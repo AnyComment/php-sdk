@@ -17,7 +17,7 @@ class Website
     /**
      * @var Request
      */
-    private $api;
+    private Request $api;
 
     /**
      * Website constructor.

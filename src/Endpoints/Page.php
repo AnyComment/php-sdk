@@ -16,7 +16,7 @@ class Page
     /**
      * @var Request
      */
-    private $api;
+    private Request $api;
 
     /**
      * Website constructor.
@@ -33,7 +33,7 @@ class Page
      * @param string $pageUrl Page URL for which to get comment count.
      * @return AppInfo
      */
-    public function getCommentCount($pageUrl)
+    public function getCommentCount(string $pageUrl)
     {
         $response = $this->api->get('client/app/info', ['url' => $pageUrl]);
         return $this->api->mapResponse(

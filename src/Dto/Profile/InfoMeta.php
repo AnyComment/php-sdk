@@ -14,5 +14,5 @@ class InfoMeta
     /**
      * @var bool Whether change of an email was requested.
      */
-    public $new_email_requested;
+    public bool $new_email_requested;
 }

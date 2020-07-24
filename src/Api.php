@@ -12,22 +12,19 @@ class Api
     /**
      * @var Config
      */
-    private $config;
+    private Config $config;
 
     /**
      * @var Request
      */
-    private $api;
+    private Request $api;
 
     /**
      * AnyComment constructor.
      * @param Config $config
      */
-    public function __construct($config)
+    public function __construct(Config $config)
     {
-        if (!$config instanceof Config) {
-            throw new \InvalidArgumentException('Wrong config instance passed, expected ' . Config::class);
-        }
         $this->config = $config;
         $this->api = new Request($config);
     }
@@ -37,7 +34,7 @@ class Api
      *
      * @return Website
      */
-    public function getWebsite()
+    public function getWebsite(): Website
     {
         return new Website($this->api);
     }
@@ -47,7 +44,7 @@ class Api
      *
      * @return Page
      */
-    public function getPage()
+    public function getPage(): Page
     {
         return new Page($this->api);
     }
@@ -57,7 +54,7 @@ class Api
      *
      * @return Profile
      */
-    public function getProfile()
+    public function getProfile(): Profile
     {
         return new Profile($this->api);
     }
@@ -67,7 +64,7 @@ class Api
      *
      * @return Comment
      */
-    public function getComment()
+    public function getComment(): Comment
     {
         return new Comment($this->api);
     }

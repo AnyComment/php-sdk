@@ -18,6 +18,7 @@
         }
     },
     "require": {
+        "php": "7.4.0",
         "guzzlehttp/guzzle": "7.0",
         "netresearch/jsonmapper": "3.0"
     },

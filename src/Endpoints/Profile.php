@@ -15,7 +15,7 @@ class Profile
     /**
      * @var Request
      */
-    private $api;
+    private Request $api;
 
     /**
      * Website constructor.
@@ -35,7 +35,7 @@ class Profile
      * @throws \AnyComment\Exceptions\ClassMapException
      * @throws \AnyComment\Exceptions\RequestFailException
      */
-    public function getInfo($id, $token)
+    public function getInfo(int $id, string $token)
     {
         $response = $this->api->get('client/profile/index', ['id' => $id, 'token' => $token]);
         return $this->api->mapResponse($response, Info::class);

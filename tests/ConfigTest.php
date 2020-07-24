@@ -15,13 +15,6 @@ class ConfigTest extends TestCase
         new Config('');
     }
 
-    public function testFailsAsApiNotString()
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessageMatches('/should\s+be\s+string/');
-        new Config([]);
-    }
-
     public function testGeneratesCorrectBaseUrl()
     {
         $config = $this->prepareMock('my-api-key', 'https://anycomment.io', 'v1');

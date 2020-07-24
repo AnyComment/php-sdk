@@ -10,13 +10,6 @@ use AnyComment\Endpoints\Website;
 
 class ApiTest extends TestCase
 {
-    public function testFailsAsWrongConfigInstance()
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessageMatches('/Wrong config instance passed/');
-        (new Api(new stdClass()));
-    }
-
     public function testExpectToGetEndpointInstances()
     {
         $config = new Config('api-key');

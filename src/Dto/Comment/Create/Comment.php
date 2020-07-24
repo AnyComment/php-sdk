@@ -7,32 +7,32 @@ class Comment
     /**
      * @var integer Comment's id.
      */
-    private $id;
+    private int $id;
 
     /**
      * @var int|null Reference to parent comment id, null when comment is not referenced.
      */
-    private $parent_id;
+    private ?int $parent_id;
 
     /**
      * @var integer Status of a comment. Available values: 0 - pending, 1 - approved, 2 - spam, 3 - deleted.
      */
-    private $status;
+    private int $status;
 
     /**
      * @var string Comment's text.
      */
-    private $content;
+    private string $content;
 
     /**
      * @var string Comment sender's IP.
      */
-    private $ip;
+    private string $ip;
 
     /**
      * @var string Created date in format: YYYY-mm-dd HH:ii:ss, e.g. 2019-08-25 13:01:47.
      */
-    private $created_date;
+    private string $created_date;
 
     /**
      * Comment constructor.
@@ -44,12 +44,12 @@ class Comment
      * @param string $createdDate
      */
     public function __construct(
-        $id,
-        $parentId,
-        $status,
-        $content,
-        $ip,
-        $createdDate
+        int $id,
+        ?int $parentId,
+        int $status,
+        string $content,
+        string $ip,
+        string $createdDate
     )
     {
         $this->id = $id;

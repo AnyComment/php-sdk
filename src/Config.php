@@ -4,7 +4,6 @@
 namespace AnyComment;
 
 
-
 /**
  * Configuration object for core API object.
  *
@@ -15,20 +14,16 @@ class Config
     /**
      * @var string Token used to access API.
      */
-    private $apiKey;
-    private $apiVersion = 'v1';
-    private $apiUrl = 'https://anycomment.io/v1';
+    private string $apiKey;
+    private string $apiVersion = 'v1';
+    private string $apiUrl = 'https://anycomment.io/v1';
 
     /**
      * AnyCommentConfig constructor.
      * @param string $apiKey
      */
-    public function __construct($apiKey)
+    public function __construct(string $apiKey)
     {
-        if (!is_string($apiKey)) {
-            throw new \InvalidArgumentException('Api key should be string');
-        }
-
         if (empty($apiKey)) {
             throw new \InvalidArgumentException('Api key is not provided');
         }
@@ -39,7 +34,7 @@ class Config
     /**
      * @param mixed $apiVersion
      */
-    public function setApiVersion($apiVersion)
+    public function setApiVersion(string $apiVersion)
     {
         $this->apiVersion = trim($apiVersion, " \t\n\r\0\x0B/");
     }
@@ -47,7 +42,7 @@ class Config
     /**
      * @param string $apiUrl
      */
-    public function setApiUrl($apiUrl)
+    public function setApiUrl(string $apiUrl)
     {
         $this->apiUrl = trim($apiUrl, " \t\n\r\0\x0B/");
     }
@@ -55,7 +50,7 @@ class Config
     /**
      * @return string
      */
-    public function getApiKey()
+    public function getApiKey(): string
     {
         return $this->apiKey;
     }
@@ -63,7 +58,7 @@ class Config
     /**
      * @return string
      */
-    public function getApiVersion()
+    public function getApiVersion(): string
     {
         return $this->apiVersion;
     }
@@ -71,7 +66,7 @@ class Config
     /**
      * @return string
      */
-    public function getApiUrl()
+    public function getApiUrl(): string
     {
         return $this->apiUrl;
     }
@@ -80,7 +75,7 @@ class Config
      * Get base URL which contains URL + version.
      * @return string
      */
-    public function getBaseApiUrl()
+    public function getBaseApiUrl(): string
     {
         return $this->getApiUrl() . '/' . $this->getApiVersion();
     }
