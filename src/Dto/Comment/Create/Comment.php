@@ -10,7 +10,7 @@ class Comment
     private $id;
 
     /**
-     * @var string Reference to parent comment id.
+     * @var int|null Reference to parent comment id, null when comment is not referenced.
      */
     private $parent_id;
 
@@ -34,13 +34,22 @@ class Comment
      */
     private $created_date;
 
+    /**
+     * Comment constructor.
+     * @param int $id
+     * @param int|null $parentId
+     * @param int $status
+     * @param string $content
+     * @param string $ip
+     * @param string $createdDate
+     */
     public function __construct(
-        int $id,
-        int $parentId = null,
-        int $status,
-        string $content,
-        string $ip,
-        string $createdDate
+        $id,
+        $parentId,
+        $status,
+        $content,
+        $ip,
+        $createdDate
     )
     {
         $this->id = $id;

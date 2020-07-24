@@ -26,17 +26,19 @@ class Author
     private $avatar;
 
     /**
-     * @param string $pageUrl
-     * @param string $pageTitle
-     * @param string|null $pagePreviewUrl
-     * @param string|null $pageAuthor
+     * Author constructor.
+     * @param string $name
+     * @param string $username
+     * @param string $email
+     * @param int|null $sex
+     * @param string|null $avatar
      */
     public function __construct(
-        string $name,
-        string $username,
-        string $email,
-        int $sex = null,
-        string $avatar = null
+        $name,
+        $username,
+        $email,
+        $sex = null,
+        $avatar = null
     )
     {
         $this->name = $name;

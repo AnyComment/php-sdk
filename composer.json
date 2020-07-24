@@ -1,6 +1,7 @@
 {
     "name": "anycomment/php-sdk",
     "description": "PHP SDK to communicate with AnyComment REST API",
+    "keywords": ["anycomment", "anycomment rest api"],
     "type": "library",
     "authors": [
         {
@@ -8,6 +9,9 @@
             "email": "sasha.tesh@gmail.com"
         }
     ],
+    "scripts": {
+        "test": "./vendor/bin/phpunit tests"
+    },
     "autoload": {
         "psr-4": {
             "AnyComment\\": "src/"
@@ -16,5 +20,15 @@
     "require": {
         "guzzlehttp/guzzle": "^7.0",
         "netresearch/jsonmapper": "^3.0"
-    }
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.4",
+        "phpunit/phpunit": "^9"
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

@@ -2,11 +2,11 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use AnyComment\AnyComment;
-use AnyComment\AnyCommentConfig;
+use AnyComment\Api;
+use AnyComment\Config;
 
-$config = new AnyCommentConfig('YOU_API_KEY');
-$api = new AnyComment($config);
+$config = new Config('YOU_API_KEY');
+$api = new Api($config);
 
 // Please replace with your website page URL
 $url = 'https://anycomment.io/demo';

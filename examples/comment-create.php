@@ -2,14 +2,14 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use AnyComment\AnyComment;
-use AnyComment\AnyCommentConfig;
+use AnyComment\Api;
+use AnyComment\Config;
 use AnyComment\Dto\Comment\Create\Page;
 use AnyComment\Dto\Comment\Create\Comment;
 use AnyComment\Dto\Comment\Create\Author;
 
-$config = new AnyCommentConfig('YOU_API_KEY');
-$api = new AnyComment($config);
+$config = new Config('YOU_API_KEY');
+$api = new Api($config);
 
 
 $page = new Page(

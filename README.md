@@ -1,8 +1,10 @@
 # AnyComment PHP-SDK
 
-PHP SDK for [AnyComment.io](https://anycomment.io) REST API.
+AnyComment API is an HTTP-based interface created for developers to help to work with AnyComment REST services.
  
 The documentation can be found [here](https://anycommentio.docs.apiary.io/).
+
+Minimum requirement is PHP 5.6.
 
 ## Installation 
 
@@ -23,6 +25,13 @@ or
 }
 ```
 
+
+## Tests
+
+Run the following command to start tests:
+```
+composer run test
+```
 
 ## Usage 
 

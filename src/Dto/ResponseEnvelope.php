@@ -19,7 +19,7 @@ class ResponseEnvelope
     public $status;
 
     /**
-     * @var \stdClass
+     * @var \stdClass|null
      */
     public $response;
 
@@ -33,7 +33,7 @@ class ResponseEnvelope
      *
      * @return bool
      */
-    public function isSuccess(): bool
+    public function isSuccess()
     {
         return $this->status === self::STATUS_OK;
     }
@@ -44,7 +44,7 @@ class ResponseEnvelope
      *
      * @return bool
      */
-    public function isFailure(): bool
+    public function isFailure()
     {
         return $this->status === self::STATUS_FAIL;
     }

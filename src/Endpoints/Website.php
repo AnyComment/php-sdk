@@ -2,7 +2,7 @@
 
 namespace AnyComment\Endpoints;
 
-use AnyComment\Api;
+use AnyComment\Request;
 use AnyComment\Dto\Website\AppInfo;
 use AnyComment\Exceptions\ClassMapException;
 use AnyComment\Exceptions\RequestFailException;
@@ -15,15 +15,15 @@ use AnyComment\Exceptions\RequestFailException;
 class Website
 {
     /**
-     * @var Api
+     * @var Request
      */
     private $api;
 
     /**
      * Website constructor.
-     * @param Api $api
+     * @param Request $api
      */
-    public function __construct(Api $api)
+    public function __construct(Request $api)
     {
         $this->api = $api;
     }

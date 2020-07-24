@@ -1,125 +1,74 @@
 <?php
 
-
 namespace AnyComment;
 
-use JsonMapper;
-use GuzzleHttp\Client;
-use AnyComment\Dto\ResponseEnvelope;
-use Psr\Http\Message\ResponseInterface;
-use GuzzleHttp\Exception\GuzzleException;
-use AnyComment\Exceptions\ClassMapException;
-use AnyComment\Exceptions\RequestFailException;
+use AnyComment\Endpoints\Page;
+use AnyComment\Endpoints\Comment;
+use AnyComment\Endpoints\Profile;
+use AnyComment\Endpoints\Website;
 
 class Api
 {
     /**
-     * @var AnyCommentConfig
+     * @var Config
      */
     private $config;
 
     /**
-     * Request constructor.
-     * @param AnyCommentConfig $config
+     * @var Request
      */
-    public function __construct(AnyCommentConfig $config)
+    private $api;
+
+    /**
+     * AnyComment constructor.
+     * @param Config $config
+     */
+    public function __construct($config)
     {
+        if (!$config instanceof Config) {
+            throw new \InvalidArgumentException('Wrong config instance passed, expected ' . Config::class);
+        }
         $this->config = $config;
+        $this->api = new Request($config);
     }
 
     /**
-     * Send GET request to provided URI.
+     * Communicate with website endpoints.
      *
-     * @param $uri
-     * @param array $params
-     * @return \Psr\Http\Message\ResponseInterface
-     * @throws RequestFailException
+     * @return Website
      */
-    public function get($uri, array $params = [])
+    public function getWebsite()
     {
-        return $this->request('GET', $uri, [
-            'query' => $params
-        ]);
+        return new Website($this->api);
     }
 
     /**
-     * Send POST request to provided URI.
-     * @param string $uri
-     * @param array $params
-     * @return \Psr\Http\Message\ResponseInterface
-     * @throws RequestFailException
-     */
-    public function post(string $uri, array $params)
-    {
-        return $this->request('POST', $uri, [
-            'form_params' => $params
-        ]);
-    }
-
-    /**
-     * Map response object into a provided class.
+     * Communicate with page endpoints.
      *
-     * @param ResponseInterface $response Response object.
-     * @param string $classNamespace Class namespace where to map response.
-     * @return mixed
-     * @throws ClassMapException
+     * @return Page
      */
-    public function mapResponse(ResponseInterface $response, string $classNamespace)
+    public function getPage()
     {
-        $array = json_decode((string)$response->getBody(), false);
-
-        try {
-            $mapper = new JsonMapper();
-            /**
-             * @var $mappedEnvelope ResponseEnvelope
-             */
-            $mappedEnvelope = $mapper->map($array, new ResponseEnvelope());
-            $mappedResponse = $mapper->map($mappedEnvelope->response, new $classNamespace);
-            $mappedEnvelope->response = $mappedResponse;
-        } catch (\JsonMapper_Exception $exception) {
-            throw new ClassMapException(
-                "Unable to map response into $classNamespace, error: " . $exception->getMessage(),
-                0,
-                $exception
-            );
-        }
-
-        return $mappedEnvelope;
+        return new Page($this->api);
     }
 
     /**
-     * @param string $method
-     * @param string $uri
-     * @param array $config
-     * @return \Psr\Http\Message\ResponseInterface
-     * @throws RequestFailException
+     * Communicate with page endpoints.
+     *
+     * @return Profile
      */
-    private function request(string $method, string $uri, array $config = [])
+    public function getProfile()
     {
-        if (!isset($config['query']['token'])) {
-            $config['query']['token'] = $this->config->getApiKey();
-        }
-        $client = $this->getClient();
-
-        try {
-            return $client->request($method, $uri, $config);
-        } catch (GuzzleException $exception) {
-            throw new RequestFailException(
-                "Failed to request {$method}: {$uri}, error: " . $exception->getMessage(),
-                0,
-                $exception
-            );
-        }
+        return new Profile($this->api);
     }
 
     /**
-     * @return Client
+     * Communicate with comment endpoints.
+     *
+     * @return Comment
      */
-    private function getClient()
+    public function getComment()
     {
-        return new Client([
-            'base_uri' => $this->config->getApiUrl(),
-            'timeout' => 8.0,
-        ]);
+        return new Comment($this->api);
     }
 }

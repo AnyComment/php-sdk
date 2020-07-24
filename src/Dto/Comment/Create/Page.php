@@ -31,10 +31,10 @@ class Page
      * @param string|null $pageAuthor
      */
     public function __construct(
-        string $pageUrl,
-        string $pageTitle,
-        string $pagePreviewUrl = null,
-        string $pageAuthor = null
+        $pageUrl,
+        $pageTitle,
+        $pagePreviewUrl = null,
+        $pageAuthor = null
     )
     {
         $this->page_url = $pageUrl;

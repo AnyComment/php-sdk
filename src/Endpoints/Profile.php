@@ -2,7 +2,7 @@
 
 namespace AnyComment\Endpoints;
 
-use AnyComment\Api;
+use AnyComment\Request;
 use AnyComment\Dto\Profile\Info;
 
 /**
@@ -13,15 +13,15 @@ use AnyComment\Dto\Profile\Info;
 class Profile
 {
     /**
-     * @var Api
+     * @var Request
      */
     private $api;
 
     /**
      * Website constructor.
-     * @param Api $api
+     * @param Request $api
      */
-    public function __construct(Api $api)
+    public function __construct(Request $api)
     {
         $this->api = $api;
     }
@@ -30,11 +30,14 @@ class Profile
      * Get application (website) information.
      *
      * @param int $id Profile ID to get info about.
+     * @param string $token OAuth token, which should be received via authorization widget.
      * @return Info
+     * @throws \AnyComment\Exceptions\ClassMapException
+     * @throws \AnyComment\Exceptions\RequestFailException
      */
-    public function getInfo(int $id)
+    public function getInfo($id, $token)
     {
-        $response = $this->api->get('client/profile/index', ['id' => $id]);
+        $response = $this->api->get('client/profile/index', ['id' => $id, 'token' => $token]);
         return $this->api->mapResponse($response, Info::class);
     }
 }
