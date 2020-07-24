@@ -107,12 +107,12 @@ $data = $api->getPage()->getCommentCount('https://anycomment.io/demo');
 ### Profile 
 
 
-#### `getInfo(int $id)`
+#### `getInfo(int $id, string $oauthToken)`
 
 Get profile information for given profile ID.
 
 Example:  
 
 ```php
-$data = $api->getProfile()->getInfo(1);
+$data = $api->getProfile()->getInfo(1, 'oauth-token');
 ```
