@@ -1,15 +1,23 @@
 <?php
 
+namespace AnyComment\Tests;
+
 use AnyComment\Config;
 use AnyComment\Api;
 use AnyComment\Endpoints\Page;
-use PHPUnit\Framework\TestCase;
 use AnyComment\Endpoints\Comment;
 use AnyComment\Endpoints\Profile;
 use AnyComment\Endpoints\Website;
 
-class ApiTest extends TestCase
+class ApiTest extends \PHPUNIT_Framework_TestCase
 {
+    public function testFailsAsIncorrectConfigInstance()
+    {
+        $this->setExpectedException(\InvalidArgumentException::class, 'Invalid config instance provided');
+
+        new Api(new \stdClass());
+    }
+
     public function testExpectToGetEndpointInstances()
     {
         $config = new Config('api-key');

@@ -10,22 +10,8 @@ use AnyComment\Dto\Profile\Info;
  *
  * @package AnyComment\Endpoints
  */
-class Profile
+class Profile extends BaseEndpoint
 {
-    /**
-     * @var Request
-     */
-    private Request $api;
-
-    /**
-     * Website constructor.
-     * @param Request $api
-     */
-    public function __construct(Request $api)
-    {
-        $this->api = $api;
-    }
-
     /**
      * Get application (website) information.
      *
@@ -35,9 +21,9 @@ class Profile
      * @throws \AnyComment\Exceptions\ClassMapException
      * @throws \AnyComment\Exceptions\RequestFailException
      */
-    public function getInfo(int $id, string $token)
+    public function getInfo($id, $token)
     {
-        $response = $this->api->get('client/profile/index', ['id' => $id, 'token' => $token]);
-        return $this->api->mapResponse($response, Info::class);
+        $response = $this->getApi()->get('client/profile/index', ['id' => $id, 'token' => $token]);
+        return $this->getApi()->mapResponse($response, Info::class);
     }
 }

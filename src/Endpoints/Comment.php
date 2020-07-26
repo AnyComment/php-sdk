@@ -14,22 +14,8 @@ use AnyComment\Exceptions\ClassMapException;
  *
  * @package AnyComment\Endpoints
  */
-class Comment
+class Comment extends BaseEndpoint
 {
-    /**
-     * @var Request
-     */
-    private Request $api;
-
-    /**
-     * Website constructor.
-     * @param Request $api
-     */
-    public function __construct(Request $api)
-    {
-        $this->api = $api;
-    }
-
     /**
      * Create new comment.
      *
@@ -40,7 +26,7 @@ class Comment
      */
     public function create(CommentAddRequest $commentCreate)
     {
-        $response = $this->api->post('client/comment/add', $commentCreate->getParams());
-        return $this->api->mapResponse($response, CommentAddResponse::class);
+        $response = $this->getApi()->post('client/comment/add', $commentCreate->getParams());
+        return $this->getApi()->mapResponse($response, CommentAddResponse::class);
     }
 }

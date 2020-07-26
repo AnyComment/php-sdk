@@ -1,17 +1,19 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+namespace AnyComment\Tests;
+
 use AnyComment\Config;
+use InvalidArgumentException;
+
 
 /**
  * Class ConfigTest helps to covers cases for config.
  */
-class ConfigTest extends TestCase
+class ConfigTest extends \PHPUNIT_Framework_TestCase
 {
     public function testFailsAsApiKeyNotProvided()
     {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Api key is not provided');
+        $this->setExpectedException(InvalidArgumentException::class, 'Api key is not provided');
         new Config('');
     }
 

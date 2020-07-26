@@ -6,7 +6,7 @@ AnyComment API is an HTTP-based interface created for developers to help to work
  
 The documentation can be found [here](https://anycommentio.docs.apiary.io/).
 
-Minimum requirement is PHP 7.4.
+Minimum requirement is PHP 5.6.
 
 ## Installation 
 

@@ -14,15 +14,15 @@ class Config
     /**
      * @var string Token used to access API.
      */
-    private string $apiKey;
-    private string $apiVersion = 'v1';
-    private string $apiUrl = 'https://anycomment.io/v1';
+    private $apiKey;
+    private $apiVersion = 'v1';
+    private $apiUrl = 'https://anycomment.io/v1';
 
     /**
      * AnyCommentConfig constructor.
      * @param string $apiKey
      */
-    public function __construct(string $apiKey)
+    public function __construct($apiKey)
     {
         if (empty($apiKey)) {
             throw new \InvalidArgumentException('Api key is not provided');
@@ -32,9 +32,9 @@ class Config
     }
 
     /**
-     * @param mixed $apiVersion
+     * @param string $apiVersion
      */
-    public function setApiVersion(string $apiVersion)
+    public function setApiVersion($apiVersion)
     {
         $this->apiVersion = trim($apiVersion, " \t\n\r\0\x0B/");
     }
@@ -42,7 +42,7 @@ class Config
     /**
      * @param string $apiUrl
      */
-    public function setApiUrl(string $apiUrl)
+    public function setApiUrl($apiUrl)
     {
         $this->apiUrl = trim($apiUrl, " \t\n\r\0\x0B/");
     }
@@ -50,7 +50,7 @@ class Config
     /**
      * @return string
      */
-    public function getApiKey(): string
+    public function getApiKey()
     {
         return $this->apiKey;
     }
@@ -58,7 +58,7 @@ class Config
     /**
      * @return string
      */
-    public function getApiVersion(): string
+    public function getApiVersion()
     {
         return $this->apiVersion;
     }
@@ -66,7 +66,7 @@ class Config
     /**
      * @return string
      */
-    public function getApiUrl(): string
+    public function getApiUrl()
     {
         return $this->apiUrl;
     }
@@ -75,7 +75,7 @@ class Config
      * Get base URL which contains URL + version.
      * @return string
      */
-    public function getBaseApiUrl(): string
+    public function getBaseApiUrl()
     {
         return $this->getApiUrl() . '/' . $this->getApiVersion();
     }

@@ -12,17 +12,17 @@ class CommentAddRequest
     /**
      * @var Page
      */
-    private Page $page;
+    private $page;
 
     /**
      * @var Comment
      */
-    private Comment $comment;
+    private $comment;
 
     /**
      * @var Author
      */
-    private Author $author;
+    private $author;
 
     /**
      * CommentAddRequest constructor.
@@ -43,7 +43,7 @@ class CommentAddRequest
      * @return array
      * @throws \ReflectionException
      */
-    public function getParams(): array
+    public function getParams()
     {
         $params = $this->getParamsOf($this->page);
         $params['comment'] = $this->getParamsOf($this->comment);
@@ -58,7 +58,7 @@ class CommentAddRequest
      * @return array
      * @throws \ReflectionException
      */
-    private function getParamsOf($instance): array
+    private function getParamsOf($instance)
     {
         $reflect = new ReflectionClass($instance);
         $props = $reflect->getProperties(ReflectionProperty::IS_PRIVATE);

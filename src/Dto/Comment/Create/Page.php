@@ -7,22 +7,22 @@ class Page
     /**
      * @var string Website page url, e.g. https://anycomment.io/demo/.
      */
-    private string $page_url;
+    private $page_url;
 
     /**
      * @var string Website page title, e.g. "AnyComment - Demo"
      */
-    private string $page_title;
+    private $page_title;
 
     /**
      * @var string|null Website page preview image URL (when available)
      */
-    private ?string $page_preview_url;
+    private $page_preview_url;
 
     /**
      * @var string|null
      */
-    private ?string $page_author;
+    private $page_author;
 
     /**
      * @param string $pageUrl
@@ -31,10 +31,10 @@ class Page
      * @param string|null $pageAuthor
      */
     public function __construct(
-        string $pageUrl,
-        string $pageTitle,
-        ?string $pagePreviewUrl = null,
-        ?string $pageAuthor = null
+        $pageUrl,
+        $pageTitle,
+        $pagePreviewUrl = null,
+        $pageAuthor = null
     )
     {
         $this->page_url = $pageUrl;

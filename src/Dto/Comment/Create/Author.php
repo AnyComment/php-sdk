@@ -7,23 +7,23 @@ class Author
     /**
      * @var string Author's name, first and last name or just one of them.
      */
-    private string $name;
+    private $name;
     /**
      * @var string Author's username.
      */
-    private string $username;
+    private $username;
     /**
      * @var string|null Author's email address.
      */
-    private ?string $email;
+    private $email;
     /**
      * @var int Author's sex. Available values: 0 - unknown, 1 - male, 2 - female
      */
-    private int $sex;
+    private $sex;
     /**
      * @var string|null
      */
-    private ?string $avatar;
+    private $avatar;
 
     /**
      * Author constructor.
@@ -34,11 +34,11 @@ class Author
      * @param string|null $avatar
      */
     public function __construct(
-        string $name,
-        string $username,
-        ?string $email,
-        int $sex = 0,
-        ?string $avatar = null
+        $name,
+        $username,
+        $email,
+        $sex = 0,
+        $avatar = null
     )
     {
         $this->name = $name;

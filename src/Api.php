@@ -6,25 +6,29 @@ use AnyComment\Endpoints\Page;
 use AnyComment\Endpoints\Comment;
 use AnyComment\Endpoints\Profile;
 use AnyComment\Endpoints\Website;
+use InvalidArgumentException;
 
 class Api
 {
     /**
      * @var Config
      */
-    private Config $config;
+    private $config;
 
     /**
      * @var Request
      */
-    private Request $api;
+    private $api;
 
     /**
      * AnyComment constructor.
      * @param Config $config
      */
-    public function __construct(Config $config)
+    public function __construct($config)
     {
+        if (!$config instanceof Config) {
+            throw new InvalidArgumentException('Invalid config instance provided');
+        }
         $this->config = $config;
         $this->api = new Request($config);
     }
@@ -34,7 +38,7 @@ class Api
      *
      * @return Website
      */
-    public function getWebsite(): Website
+    public function getWebsite()
     {
         return new Website($this->api);
     }
@@ -44,7 +48,7 @@ class Api
      *
      * @return Page
      */
-    public function getPage(): Page
+    public function getPage()
     {
         return new Page($this->api);
     }
@@ -54,7 +58,7 @@ class Api
      *
      * @return Profile
      */
-    public function getProfile(): Profile
+    public function getProfile()
     {
         return new Profile($this->api);
     }
@@ -64,7 +68,7 @@ class Api
      *
      * @return Comment
      */
-    public function getComment(): Comment
+    public function getComment()
     {
         return new Comment($this->api);
     }

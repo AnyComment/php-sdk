@@ -16,7 +16,7 @@ class ResponseEnvelope
     /**
      * @var string Status of the response. See constants above.¬
      */
-    public string $status;
+    public $status;
 
     /**
      * @var \stdClass|null
@@ -26,14 +26,14 @@ class ResponseEnvelope
     /**
      * @var null|string Error message when applicable.
      */
-    public ?string $error = null;
+    public $error = null;
 
     /**
      * Check whether response is success.
      *
      * @return bool
      */
-    public function isSuccess(): bool
+    public function isSuccess()
     {
         return $this->status === self::STATUS_OK;
     }
@@ -44,7 +44,7 @@ class ResponseEnvelope
      *
      * @return bool
      */
-    public function isFailure(): bool
+    public function isFailure()
     {
         return $this->status === self::STATUS_FAIL;
     }

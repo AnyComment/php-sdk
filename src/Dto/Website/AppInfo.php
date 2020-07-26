@@ -12,10 +12,10 @@ class AppInfo
     /**
      * @var integer Unique website ID.
      */
-    public int $id;
+    public $id;
 
     /**
      * @var string Website URL.
      */
-    public string $url;
+    public $url;
 }

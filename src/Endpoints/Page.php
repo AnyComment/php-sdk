@@ -11,32 +11,18 @@ use AnyComment\Dto\Website\AppInfo;
  *
  * @package AnyComment\Endpoints
  */
-class Page
+class Page extends BaseEndpoint
 {
-    /**
-     * @var Request
-     */
-    private Request $api;
-
-    /**
-     * Website constructor.
-     * @param Request $api
-     */
-    public function __construct(Request $api)
-    {
-        $this->api = $api;
-    }
-
     /**
      * Get comment count for provided page URL.
      *
      * @param string $pageUrl Page URL for which to get comment count.
      * @return AppInfo
      */
-    public function getCommentCount(string $pageUrl)
+    public function getCommentCount($pageUrl)
     {
-        $response = $this->api->get('client/app/info', ['url' => $pageUrl]);
-        return $this->api->mapResponse(
+        $response = $this->getApi()->get('client/app/info', ['url' => $pageUrl]);
+        return $this->getApi()->mapResponse(
             $response,
             AppInfo::class
         );

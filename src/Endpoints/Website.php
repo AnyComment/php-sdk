@@ -12,22 +12,8 @@ use AnyComment\Exceptions\RequestFailException;
  *
  * @package AnyComment\Endpoints
  */
-class Website
+class Website extends BaseEndpoint
 {
-    /**
-     * @var Request
-     */
-    private Request $api;
-
-    /**
-     * Website constructor.
-     * @param Request $api
-     */
-    public function __construct(Request $api)
-    {
-        $this->api = $api;
-    }
-
     /**
      * Get application (website) information.
      *
@@ -37,7 +23,7 @@ class Website
      */
     public function getInfo()
     {
-        $response = $this->api->get('client/app/info');
-        return $this->api->mapResponse($response, AppInfo::class);
+        $response = $this->getApi()->get('client/app/info');
+        return $this->getApi()->mapResponse($response, AppInfo::class);
     }
 }

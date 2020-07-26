@@ -9,5 +9,5 @@ class CommentAddResponse
     /**
      * @var int Newly created comment id.
      */
-    public int $id;
+    public $id;
 }
