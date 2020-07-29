@@ -4,7 +4,7 @@
 namespace AnyComment\Dto\Comment\Create;
 
 
-class CommentAddResponse
+class NewComment
 {
     /**
      * @var int Newly created comment id.

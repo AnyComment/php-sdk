@@ -7,13 +7,14 @@ use AnyComment\Config;
 use AnyComment\Dto\Comment\Create\Page;
 use AnyComment\Dto\Comment\Create\Comment;
 use AnyComment\Dto\Comment\Create\Author;
+use AnyComment\Dto\Comment\Create\CommentCreateRequest;
 
 $config = new Config('YOU_API_KEY');
 $api = new Api($config);
 
 
 $page = new Page(
-    'http://anycomment.io/demo',
+    'https://anycomment.io/demo',
     'Demo'
 );
 $comment = new Comment(
@@ -22,14 +23,11 @@ $comment = new Comment(
     1,
     'This is my comment',
     '127.0.0.1',
-    '2020-07-05 13:02:22'
+    date('Y-m-d H:i:s')
 );
-$author = new Author(
-    'John Doe',
-    'john.doe',
-    'john.doe@example.com',
-);
-$createRequest = new \AnyComment\Dto\Comment\Create\CommentAddRequest(
+$author = new Author('John Doe');
+
+$createRequest = new CommentCreateRequest(
     $page,
     $comment,
     $author

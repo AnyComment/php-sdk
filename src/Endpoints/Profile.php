@@ -3,7 +3,7 @@
 namespace AnyComment\Endpoints;
 
 use AnyComment\Request;
-use AnyComment\Dto\Profile\Info;
+use AnyComment\Dto\Profile\ProfileInfoResponse;
 
 /**
  * Class Profile represents class which communicates with profile specific endpoints.
@@ -17,13 +17,13 @@ class Profile extends BaseEndpoint
      *
      * @param int $id Profile ID to get info about.
      * @param string $token OAuth token, which should be received via authorization widget.
-     * @return Info
+     * @return ProfileInfoResponse
      * @throws \AnyComment\Exceptions\ClassMapException
      * @throws \AnyComment\Exceptions\RequestFailException
      */
     public function getInfo($id, $token)
     {
         $response = $this->getApi()->get('client/profile/index', ['id' => $id, 'token' => $token]);
-        return $this->getApi()->mapResponse($response, Info::class);
+        return $this->getApi()->mapResponse($response, ProfileInfoResponse::class);
     }
 }

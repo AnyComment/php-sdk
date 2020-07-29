@@ -2,46 +2,48 @@
 
 namespace AnyComment\Dto\Comment\Create;
 
-class Comment
+use AnyComment\Dto\BaseDto;
+
+class Comment extends BaseDto
 {
     /**
      * @var integer Comment's id.
      */
-    private $id;
+    public $id;
 
     /**
      * @var int|null Reference to parent comment id, null when comment is not referenced.
      */
-    private $parent_id;
+    public $parent_id;
 
     /**
      * @var integer Status of a comment. Available values: 0 - pending, 1 - approved, 2 - spam, 3 - deleted.
      */
-    private $status;
+    public $status;
 
     /**
      * @var string Comment's text.
      */
-    private $content;
+    public $content;
 
     /**
      * @var string Comment sender's IP.
      */
-    private $ip;
+    public $ip;
 
     /**
      * @var string Created date in format: YYYY-mm-dd HH:ii:ss, e.g. 2019-08-25 13:01:47.
      */
-    private $created_date;
+    public $created_date;
 
     /**
      * Comment constructor.
      * @param int $id
      * @param int|null $parentId
-     * @param int $status
-     * @param string $content
-     * @param string $ip
-     * @param string $createdDate
+     * @param int $status Status of a comment. Available values: 0 - pending, 1 - approved, 2 - spam, 3 - deleted.
+     * @param string $content Comment's text.
+     * @param string $ip Comment sender's IP.
+     * @param string $createdDate Created date in format: YYYY-mm-dd HH:ii:ss, e.g. 2019-08-25 13:01:47.
      */
     public function __construct(
         $id,

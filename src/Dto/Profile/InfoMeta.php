@@ -2,11 +2,11 @@
 
 namespace AnyComment\Dto\Page;
 
-use AnyComment\Dto\Profile\Info;
+use AnyComment\Dto\Profile\ProfileInfoResponse;
 
 /**
  * Class InfoMeta holds meta information for profile info DTO object.
- * @see Info $meta property for details.
+ * @see ProfileInfoResponse $meta property for details.
  * @package AnyComment\Dto\Page
  */
 class InfoMeta

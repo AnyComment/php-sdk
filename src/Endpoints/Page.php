@@ -3,8 +3,7 @@
 
 namespace AnyComment\Endpoints;
 
-use AnyComment\Request;
-use AnyComment\Dto\Website\AppInfo;
+use AnyComment\Dto\Page\CommentCountResponse;
 
 /**
  * Class Page represents class which communicates with page specific endpoints.
@@ -17,14 +16,17 @@ class Page extends BaseEndpoint
      * Get comment count for provided page URL.
      *
      * @param string $pageUrl Page URL for which to get comment count.
-     * @return AppInfo
+     * @return CommentCountResponse
+     * @throws \AnyComment\Exceptions\ClassMapException
+     * @throws \AnyComment\Exceptions\RequestFailException
+     * @throws \AnyComment\Exceptions\UnexpectedResponseException
      */
     public function getCommentCount($pageUrl)
     {
-        $response = $this->getApi()->get('client/app/info', ['url' => $pageUrl]);
+        $response = $this->getApi()->get('client/page/comment-count', ['url' => $pageUrl]);
         return $this->getApi()->mapResponse(
             $response,
-            AppInfo::class
+            CommentCountResponse::class
         );
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace AnyComment\Dto;
+namespace AnyComment\Dto\Envelopes;
 
 /**
  * Class ResponseEnvelope is generic response envelope returned from AnyComment REST API.
@@ -24,7 +24,7 @@ class ResponseEnvelope
     public $response;
 
     /**
-     * @var null|string Error message when applicable.
+     * @var mixed Error message when applicable.
      */
     public $error = null;
 

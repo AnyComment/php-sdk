@@ -2,27 +2,29 @@
 
 namespace AnyComment\Dto\Comment\Create;
 
-class Page
+use AnyComment\Dto\BaseDto;
+
+class Page extends BaseDto
 {
     /**
      * @var string Website page url, e.g. https://anycomment.io/demo/.
      */
-    private $page_url;
+    public $page_url;
 
     /**
      * @var string Website page title, e.g. "AnyComment - Demo"
      */
-    private $page_title;
+    public $page_title;
 
     /**
      * @var string|null Website page preview image URL (when available)
      */
-    private $page_preview_url;
+    public $page_preview_url;
 
     /**
      * @var string|null
      */
-    private $page_author;
+    public $page_author;
 
     /**
      * @param string $pageUrl

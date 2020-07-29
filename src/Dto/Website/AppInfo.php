@@ -2,11 +2,7 @@
 
 namespace AnyComment\Dto\Website;
 
-/**
- * Class AppInfo holds response from client/app/info endpoint.
- *
- * @package AnyComment\Dto\Website
- */
+
 class AppInfo
 {
     /**

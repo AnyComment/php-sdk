@@ -3,14 +3,14 @@
 
 namespace AnyComment;
 
-use InvalidArgumentException;
 use JsonMapper;
 use GuzzleHttp\Client;
-use AnyComment\Dto\ResponseEnvelope;
-use Psr\Http\Message\ResponseInterface;
-use GuzzleHttp\Exception\GuzzleException;
+use InvalidArgumentException;
+use AnyComment\Dto\Envelopes\ResponseEnvelope;
+use GuzzleHttp\Message\ResponseInterface;
 use AnyComment\Exceptions\ClassMapException;
 use AnyComment\Exceptions\RequestFailException;
+use AnyComment\Exceptions\UnexpectedResponseException;
 
 class Request
 {
@@ -36,7 +36,7 @@ class Request
      *
      * @param $uri
      * @param array $params
-     * @return \Psr\Http\Message\ResponseInterface
+     * @return \GuzzleHttp\Message\ResponseInterface
      * @throws RequestFailException
      */
     public function get($uri, $params = [])
@@ -50,7 +50,7 @@ class Request
      * Send POST request to provided URI.
      * @param string $uri
      * @param array $params
-     * @return \Psr\Http\Message\ResponseInterface
+     * @return \GuzzleHttp\Message\ResponseInterface
      * @throws RequestFailException
      */
     public function post($uri, $params = [])
@@ -60,7 +60,7 @@ class Request
         }
 
         return $this->request('POST', $uri, [
-            'form_params' => $params
+            'body' => $params
         ]);
     }
 
@@ -71,11 +71,12 @@ class Request
      * @param string $classNamespace Class namespace where to map response.
      * @return mixed
      * @throws ClassMapException
+     * @throws UnexpectedResponseException
      */
     public function mapResponse($response, $classNamespace)
     {
         if (!$response instanceof ResponseInterface) {
-            throw new InvalidArgumentException('Wrong reponse instance provided');
+            throw new InvalidArgumentException('Wrong response instance provided');
         }
 
         if (empty($classNamespace)) {
@@ -84,16 +85,13 @@ class Request
 
         $array = json_decode((string)$response->getBody(), false);
 
+        if ($array === null) {
+            throw new UnexpectedResponseException('Unexpected API response, nothing was returned');
+        }
+
         try {
             $mapper = new JsonMapper();
-            /**
-             * @var $mappedEnvelope ResponseEnvelope
-             */
-            $mappedEnvelope = $mapper->map($array, new ResponseEnvelope());
-            $mappedResponse = !empty($mappedEnvelope->response)
-                ? $mapper->map($mappedEnvelope->response, new $classNamespace)
-                : null;
-            $mappedEnvelope->response = $mappedResponse;
+            return $mapper->map($array, new $classNamespace);
         } catch (\JsonMapper_Exception $exception) {
             throw new ClassMapException(
                 "Unable to map response into $classNamespace, error: " . $exception->getMessage(),
@@ -102,14 +100,14 @@ class Request
             );
         }
 
-        return $mappedEnvelope;
+        return null;
     }
 
     /**
-     * @param string $method
-     * @param string $uri
+     * @param $method
+     * @param $uri
      * @param array $config
-     * @return \Psr\Http\Message\ResponseInterface
+     * @return \GuzzleHttp\Message\ResponseInterface
      * @throws RequestFailException
      */
     private function request($method, $uri, $config = [])
@@ -124,8 +122,10 @@ class Request
         $client = $this->getClient();
 
         try {
-            return $client->request($method, $uri, $config);
-        } catch (GuzzleException $exception) {
+            $request = $client->createRequest($method, $uri, $config);
+
+            return $client->send($request);
+        } catch (\Exception $exception) {
             throw new RequestFailException(
                 "Failed to request {$method}: {$uri}, error: " . $exception->getMessage(),
                 0,
@@ -140,7 +140,7 @@ class Request
     private function getClient()
     {
         return new Client([
-            'base_uri' => $this->config->getBaseApiUrl(),
+            'base_url' => $this->config->getBaseApiUrl(),
             'timeout' => 8.0,
         ]);
     }

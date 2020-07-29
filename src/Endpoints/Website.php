@@ -3,7 +3,7 @@
 namespace AnyComment\Endpoints;
 
 use AnyComment\Request;
-use AnyComment\Dto\Website\AppInfo;
+use AnyComment\Dto\Website\AppInfoResponse;
 use AnyComment\Exceptions\ClassMapException;
 use AnyComment\Exceptions\RequestFailException;
 
@@ -17,13 +17,13 @@ class Website extends BaseEndpoint
     /**
      * Get application (website) information.
      *
-     * @return AppInfo
+     * @return AppInfoResponse
      * @throws ClassMapException
      * @throws RequestFailException
      */
     public function getInfo()
     {
         $response = $this->getApi()->get('client/app/info');
-        return $this->getApi()->mapResponse($response, AppInfo::class);
+        return $this->getApi()->mapResponse($response, AppInfoResponse::class);
     }
 }

@@ -35,6 +35,12 @@ Run the following command to start tests:
 composer run test
 ```
 
+## Examples 
+
+Examples can be found in `/examples` folder. 
+
+> Notice that you need to provide your API key for each example to make it work.
+
 ## Usage 
 
 You need to prepare a configuration class and pass your API key to constructor. 
@@ -117,4 +123,48 @@ Example:
 
 ```php
 $data = $api->getProfile()->getInfo(1, 'oauth-token');
+```
+
+
+### Comment 
+
+
+#### `getList(string $createdDate = null)`
+
+Get list of comments chronologically since given date (when provided).
+
+Example:  
+
+```php
+var_dump($api->getComment()->getList());
+```
+
+#### `create(CommentCreateRequest $commentObject)`
+
+Create new comment with given data.
+
+Example:  
+
+```php
+$page = new Page(
+    'https://anycomment.io/demo',
+    'Demo'
+);
+$comment = new Comment(
+    1,
+    null,
+    1,
+    'This is my comment',
+    '127.0.0.1',
+    date('Y-m-d H:i:s')
+);
+$author = new Author('John Doe');
+
+$createRequest = new CommentCreateRequest(
+    $page,
+    $comment,
+    $author
+);
+
+var_dump($api->getComment()->create($createRequest));
 ```

@@ -2,28 +2,30 @@
 
 namespace AnyComment\Dto\Comment\Create;
 
-class Author
+use AnyComment\Dto\BaseDto;
+
+class Author extends BaseDto
 {
     /**
      * @var string Author's name, first and last name or just one of them.
      */
-    private $name;
+    public $name;
     /**
-     * @var string Author's username.
+     * @var string|null Author's username.
      */
-    private $username;
+    public $username;
     /**
      * @var string|null Author's email address.
      */
-    private $email;
+    public $email;
     /**
      * @var int Author's sex. Available values: 0 - unknown, 1 - male, 2 - female
      */
-    private $sex;
+    public $sex;
     /**
      * @var string|null
      */
-    private $avatar;
+    public $avatar;
 
     /**
      * Author constructor.
@@ -35,8 +37,8 @@ class Author
      */
     public function __construct(
         $name,
-        $username,
-        $email,
+        $username = null,
+        $email = null,
         $sex = 0,
         $avatar = null
     )

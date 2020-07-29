@@ -1,14 +1,11 @@
 <?php
 
+
 namespace AnyComment\Dto\Profile;
+
 
 use AnyComment\Dto\Page\InfoMeta;
 
-/**
- * Class Info holds response from client/profile/index endpoint.
- *
- * @package AnyComment\Dto\Page
- */
 class Info
 {
     /**
@@ -49,7 +46,7 @@ class Info
     /**
      * @var boolean Flag whether user is moderator.
      */
-    public bool $is_moderator;
+    public $is_moderator;
 
     /**
      * @var int|null Genger. null - unknown, 0 - man, 1 - woman.
