@@ -1,6 +1,6 @@
 <?php
 
-namespace AnyComment\Dto\Profile;
+namespace AnyComment\Dto\Profile\Index;
 
 use AnyComment\Dto\Envelopes\ResponseEnvelope;
 

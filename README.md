@@ -22,7 +22,7 @@ or
 ```json
 {
   "require":{
-    "anycomment/php-sdk":"1.0.0"
+    "anycomment/php-sdk":"0.1"
   }
 }
 ```
@@ -72,11 +72,11 @@ var_dump($api->getWebsite()->getInfo());
 This would be the output: 
 
 ```php
-class AnyComment\Dto\ResponseEnvelope#27 (3) {
+class AnyComment\Dto\Envelopes\ResponseEnvelope#27 (3) {
   public $status =>
   string(2) "ok"
   public $response =>
-  class AnyComment\Dto\Website\AppInfo#26 (2) {
+  class AnyComment\Dto\Website\AppInfo\AppInfo#26 (2) {
     public $id =>
     int(1)
     public $url =>

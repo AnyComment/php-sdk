@@ -2,8 +2,7 @@
 
 namespace AnyComment\Endpoints;
 
-use AnyComment\Request;
-use AnyComment\Dto\Profile\ProfileInfoResponse;
+use AnyComment\Dto\Profile\Index\ProfileInfoResponse;
 
 /**
  * Class Profile represents class which communicates with profile specific endpoints.

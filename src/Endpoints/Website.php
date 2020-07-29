@@ -2,8 +2,7 @@
 
 namespace AnyComment\Endpoints;
 
-use AnyComment\Request;
-use AnyComment\Dto\Website\AppInfoResponse;
+use AnyComment\Dto\Website\AppInfo\AppInfoResponse;
 use AnyComment\Exceptions\ClassMapException;
 use AnyComment\Exceptions\RequestFailException;
 

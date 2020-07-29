@@ -1,6 +1,6 @@
 <?php
 
-namespace AnyComment\Dto\Website;
+namespace AnyComment\Dto\Website\AppInfo;
 
 use AnyComment\Dto\Envelopes\ResponseEnvelope;
 

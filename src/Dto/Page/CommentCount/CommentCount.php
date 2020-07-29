@@ -1,7 +1,7 @@
 <?php
 
 
-namespace AnyComment\Dto\Page;
+namespace AnyComment\Dto\Page\CommentCount;
 
 
 class CommentCount

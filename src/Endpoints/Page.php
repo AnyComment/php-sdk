@@ -3,7 +3,7 @@
 
 namespace AnyComment\Endpoints;
 
-use AnyComment\Dto\Page\CommentCountResponse;
+use AnyComment\Dto\Page\CommentCount\CommentCountResponse;
 
 /**
  * Class Page represents class which communicates with page specific endpoints.

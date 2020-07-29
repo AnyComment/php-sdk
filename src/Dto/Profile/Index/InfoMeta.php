@@ -1,8 +1,8 @@
 <?php
 
-namespace AnyComment\Dto\Page;
+namespace AnyComment\Dto\Page\Index;
 
-use AnyComment\Dto\Profile\ProfileInfoResponse;
+use AnyComment\Dto\Profile\Index\ProfileInfoResponse;
 
 /**
  * Class InfoMeta holds meta information for profile info DTO object.

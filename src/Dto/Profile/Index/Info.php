@@ -1,10 +1,10 @@
 <?php
 
 
-namespace AnyComment\Dto\Profile;
+namespace AnyComment\Dto\Profile\Index;
 
 
-use AnyComment\Dto\Page\InfoMeta;
+use AnyComment\Dto\Page\Index\InfoMeta;
 
 class Info
 {
