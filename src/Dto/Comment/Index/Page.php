@@ -32,6 +32,16 @@ class Page
     public $comment_count;
 
     /**
+     * @var int Number of time page was rated by users.
+     */
+    public $rating_count;
+
+    /**
+     * @var float Page rating value, such as 5.0.
+     */
+    public $rating_average;
+
+    /**
      * @var string Date and time when page was created. Example: "2019-12-25 22:56:03+03".
      */
     public $created_date;

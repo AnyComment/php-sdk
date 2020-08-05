@@ -39,7 +39,7 @@ class Comment extends BaseEndpoint
      * This endpoint returns all comments chronologically, there is no way to filter by page URL.
      *
      * @param string $createdDate If date is provided, comments would returned after the provided date.
-     * @return CommentCreateResponse
+     * @return CommentIndexResponse
      * @throws ClassMapException
      * @throws RequestFailException
      * @throws UnexpectedResponseException
