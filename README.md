@@ -52,12 +52,12 @@ See example:
 
 require __DIR__ . '/vendor/autoload.php';
 
-use AnyComment\AnyComment;
-use AnyComment\AnyCommentConfig;
+use AnyComment\Api;
+use AnyComment\Config;
 
 $apiKey = 'YOUR-API-KEY'; // Replace with your key
-$config = new AnyCommentConfig($apiKey);
-$api = new AnyComment($config);
+$config = new Config($apiKey);
+$api = new Api($config);
 ```
 
 Then call some endpoint. Every endpoint would return same mapped response envelope, such 
