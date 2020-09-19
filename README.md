@@ -10,7 +10,7 @@ Minimum requirement is PHP 5.6.
 
 ## Installation 
 
-Add new package to `composer.json` in your project directory:
+Add [new package](https://packagist.org/packages/anycomment/php-sdk) to `composer.json` in your project directory:
 
 ```bash
 composer require anycomment/php-sdk
