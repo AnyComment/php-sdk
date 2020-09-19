@@ -39,14 +39,22 @@ class Comment extends BaseEndpoint
      * This endpoint returns all comments chronologically, there is no way to filter by page URL.
      *
      * @param string $createdDate If date is provided, comments would returned after the provided date.
+     * @param string|null $pageUrl Get comments for specific Page URL, example: http://anycomment.io/demo.
      * @return CommentIndexResponse
      * @throws ClassMapException
      * @throws RequestFailException
      * @throws UnexpectedResponseException
      */
-    public function getList($createdDate = null)
+    public function getList($createdDate = null, $pageUrl = null)
     {
-        $response = $this->getApi()->get('client/comment/index', ['created_date' => $createdDate]);
+        $params = [];
+        if (!empty($createdDate)) {
+            $params['created_date'] = $createdDate;
+        }
+        if (!empty($pageUrl)) {
+            $params['page_url'] = $pageUrl;
+        }
+        $response = $this->getApi()->get('client/comment/index', $params);
         return $this->getApi()->mapResponse($response, CommentIndexResponse::class);
     }
 }
