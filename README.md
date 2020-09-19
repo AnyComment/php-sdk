@@ -129,9 +129,11 @@ $data = $api->getProfile()->getInfo(1, 'oauth-token');
 ### Comment 
 
 
-#### `getList(string $createdDate = null)`
+#### `getList(?string $createdDate = null, ?string $pageUrl = null)`
 
 Get list of comments chronologically since given date (when provided).
+
+You may also provide page URL for which to get comments for.
 
 Example:  
 
