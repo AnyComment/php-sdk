@@ -22,7 +22,7 @@ or
 ```json
 {
   "require":{
-    "anycomment/php-sdk":"0.1"
+    "anycomment/php-sdk":"^0.1.2"
   }
 }
 ```
